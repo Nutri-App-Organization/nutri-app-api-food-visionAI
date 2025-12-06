@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const upload = multer({ dest: "uploads/" });
+const upload = multer({ storage: multer.memoryStorage() });
 
 // Inicializa Gemini
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
