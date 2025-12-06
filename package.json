@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "node server"
+    "start": "node index.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
