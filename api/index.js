@@ -1,4 +1,4 @@
-import app from "../server.js";
+import app from "../index";
 import serverless from "serverless-http";
 
 export default async function handler(req, res) {
