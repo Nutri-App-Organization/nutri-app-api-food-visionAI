@@ -25,8 +25,8 @@ app.post(
       const imageFile = req.files?.image?.[0];
       const audioFile = req.files?.audio?.[0];
 
-      const imageData = imageFile ? fs.readFileSync(imageFile.path) : null;
-      const audioData = audioFile ? fs.readFileSync(audioFile.path) : null;
+      const imageData = imageFile?.buffer;
+      const audioData = audioFile?.buffer;
 
       const model = genAI.getGenerativeModel({
         model: "gemini-2.5-flash-lite",
