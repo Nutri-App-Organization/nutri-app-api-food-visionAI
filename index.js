@@ -60,14 +60,13 @@ Si no reconoces el alimento, devuelve: { "calorias_por_100g": null, ... }
           },
         });
 
-      /* const result = await model.generateContent(inputParts); */
-      res.json({ ok: true });
-      /* const rawText = result.response.text();
+      const result = await model.generateContent(inputParts);
+      const rawText = result.response.text();
       const match = rawText.match(/```json\n([\s\S]*?)\n```/);
       const jsonText = match ? match[1] : rawText;
 
       const analysis = JSON.parse(jsonText);
-      res.json({ analysis }); */
+      res.json({ analysis });
     } catch (error) {
       console.error("Error:", error);
       res.status(500).json({ error: "Error analizando alimento" });
