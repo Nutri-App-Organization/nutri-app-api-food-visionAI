@@ -1,6 +1,5 @@
 import express from "express";
 import multer from "multer"; // para manejar archivos (imagen/audio)
-import fs from "fs";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 dotenv.config();
