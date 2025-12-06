@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import multer from "multer";
 import { GoogleGenerativeAI } from "@google/generative-ai";
@@ -77,3 +80,8 @@ Si no reconoces el alimento, devuelve: { "calorias_por_100g": null, ... }
 );
 
 export default app;
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor en http://localhost:${PORT}`);
+});
