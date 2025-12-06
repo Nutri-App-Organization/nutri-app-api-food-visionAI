@@ -74,4 +74,8 @@ Si no reconoces el alimento, devuelve: { "calorias_por_100g": null, ... }
   }
 );
 
+app.get("/ping", (req, res) => {
+  res.json({ message: "pong" });
+});
+
 export default app;
