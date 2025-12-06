@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   },
   "main": "index.js",
   "scripts": {
@@ -15,10 +15,5 @@
     "express": "^5.2.1",
     "multer": "^2.0.2",
     "serverless-http": "^4.0.0"
-  },
-  "functions": {
-    "api/index.js": {
-      "runtime": "nodejs18.x"
-    }
   }
 }
