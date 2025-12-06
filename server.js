@@ -75,4 +75,4 @@ Si no reconoces el alimento, devuelve: { "calorias_por_100g": null, ... }
   }
 );
 
-app.listen(3000, () => console.log("API corriendo en http://localhost:3000"));
+export default app;
