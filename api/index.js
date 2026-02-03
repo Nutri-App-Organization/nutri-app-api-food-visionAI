@@ -47,7 +47,7 @@ Alimento a analizar: ${textInput || "ver imagen/audio adjunto"}
 
 Responde SOLO con este JSON (valores por cada 100 gramos):
 {
-  "alimento": "nombre del alimento identificado",
+  "meal": "nombre del alimento identificado",
   "calorias_por_100g": number,
   "proteinas_g": number,
   "grasas_g": number,
