@@ -9,6 +9,7 @@ const app = express();
 const upload = multer({ storage: multer.memoryStorage() });
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+console.log("API Key cargada:", process.env.GEMINI_API_KEY ? "Sí" : "No");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -34,18 +35,26 @@ app.post(
 
       const model = genAI.getGenerativeModel({
         model: "gemini-2.5-flash-lite",
+        generationConfig: {
+          responseMimeType: "application/json",
+        },
       });
 
       const prompt = `
-Analiza este alimento y devuelve SOLO un JSON con:
+Eres un nutricionista experto. Analiza este alimento y devuelve información nutricional PRECISA basada en datos reales.
+
+Alimento a analizar: ${textInput || "ver imagen/audio adjunto"}
+
+Responde SOLO con este JSON (valores por cada 100 gramos):
 {
-  "calorias_por_100g": ...,
-  "proteinas_g": ...,
-  "grasas_g": ...,
-  "carbohidratos_g": ...
+  "alimento": "nombre del alimento identificado",
+  "calorias_por_100g": number,
+  "proteinas_g": number,
+  "grasas_g": number,
+  "carbohidratos_g": number
 }
-No agregues texto explicativo ni formato Markdown.
-Si no reconoces el alimento, devuelve: { "calorias_por_100g": null, ... }
+
+Usa valores nutricionales reales y verificables. No inventes.
 `;
 
       const inputParts = [{ text: prompt }];
@@ -76,7 +85,7 @@ Si no reconoces el alimento, devuelve: { "calorias_por_100g": null, ... }
       console.error("Error:", error);
       res.status(500).json({ error: error.message });
     }
-  }
+  },
 );
 
 export default app;
